@@ -5,23 +5,37 @@
  */
 
 // You can delete this file if you're not using it
-exports.createPages = ({ actions }) => {
-  const { createPage } = actions
-  const posts = [
+const path = require('path')
+
+exports.createPages = async ({
+  actions,
+  graphql,
+}) => {
+  const {
+    createPage,
+  } = actions
+  const result = await graphql(`
     {
-      name: 'post1',
-      content: 'content1',
-    },
-    {
-      name: 'post2',
-      content: 'content2',
-    },
-  ]
-  posts.forEach(post => {
+      allMarkdownRemark {
+        edges {
+          node {
+            frontmatter {
+              path
+            }
+          }
+        }
+      }
+    }
+  `)
+  if (result.errors) {
+    console.error(result.errors)
+  }
+  result.data.allMarkdownRemark.edges.forEach(({
+    node,
+  }) => {
     createPage({
-      path: `/${post.name}`,
-      component: require.resolve('./src/templates/post.js'),
-      context: { post },
+      path: node.frontmatter.path,
+      component: path.resolve('src/templates/post.js'),
     })
   })
 }
