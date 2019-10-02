@@ -35,7 +35,7 @@ exports.createPages = async ({
   }) => {
     createPage({
       path: node.frontmatter.path,
-      component: path.resolve('src/templates/post.js'),
+      component: path.resolve('src/templates/blog-post.js'),
     })
   })
 }
