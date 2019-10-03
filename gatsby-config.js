@@ -11,8 +11,8 @@ module.exports = {
     {
       resolve: 'gatsby-source-filesystem',
       options: {
-        name: 'blog',
-        path: `${__dirname}/src/content/blog`,
+        name: 'posts',
+        path: `${__dirname}/src/content/_posts`,
       },
     },
     'gatsby-plugin-react-helmet',

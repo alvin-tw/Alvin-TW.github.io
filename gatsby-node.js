@@ -1,11 +1,7 @@
-/**
- * Implement Gatsby's Node APIs in this file.
- *
- * See: https://www.gatsbyjs.org/docs/node-apis/
- */
-
-// You can delete this file if you're not using it
 const path = require('path')
+const {
+  createFilePath,
+} = require('gatsby-source-filesystem')
 
 exports.createPages = async ({
   actions,
@@ -19,8 +15,8 @@ exports.createPages = async ({
       allMarkdownRemark {
         edges {
           node {
-            frontmatter {
-              path
+            fields {
+              slug
             }
           }
         }
@@ -28,14 +24,41 @@ exports.createPages = async ({
     }
   `)
   if (result.errors) {
-    console.error(result.errors)
+    throw (result.errors)
   }
-  result.data.allMarkdownRemark.edges.forEach(({
-    node,
-  }) => {
+
+  const posts = result.data.allMarkdownRemark.edges
+
+  posts.forEach(post => {
     createPage({
-      path: node.frontmatter.path,
-      component: path.resolve('src/templates/blog-post.js'),
+      // Path for this page — required
+      path: post.node.fields.slug,
+      component: path.resolve('src/templates/blog-post.jsx'),
+      context: {
+        slug: post.node.fields.slug,
+      },
     })
   })
+}
+
+exports.onCreateNode = ({
+  node,
+  actions,
+  getNode,
+}) => {
+  const {
+    createNodeField,
+  } = actions
+
+  if (node.internal.type === 'MarkdownRemark') {
+    const value = createFilePath({
+      node,
+      getNode,
+    })
+    createNodeField({
+      name: 'slug',
+      node,
+      value,
+    })
+  }
 }
