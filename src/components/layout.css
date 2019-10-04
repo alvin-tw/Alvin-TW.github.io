@@ -1,15 +1,11 @@
-html,
-body {
-  height: 100%;
-}
-
 .column-container {
   padding: 50px 20px;
 }
 
 footer {
-  position: relative;
-  bottom: 0;
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
   font-size: 0.8em;
   text-align: center;
 }

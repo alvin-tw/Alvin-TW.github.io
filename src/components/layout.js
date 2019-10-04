@@ -12,7 +12,12 @@ import Footer from './footer'
 import './layout.css'
 
 const Layout = ({ children }) => (
-  <>
+  <div
+    style={{
+      position: 'relative',
+      minHeight: '100vh',
+    }}
+  >
     <Header />
     <Container fluid>
       <Row>
@@ -38,7 +43,7 @@ const Layout = ({ children }) => (
       </Row>
     </Container>
     <Footer />
-  </>
+  </div>
 )
 
 Layout.propTypes = {
