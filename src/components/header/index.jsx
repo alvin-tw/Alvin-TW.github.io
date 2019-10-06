@@ -10,7 +10,6 @@ const Header = () =>  (
   <Navbar
     as='header'
     collapseOnSelect
-    className="w-100"
     sticky="top"
     expand="lg"
     bg="dark"

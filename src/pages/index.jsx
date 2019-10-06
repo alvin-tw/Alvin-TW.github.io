@@ -18,7 +18,12 @@ const IndexPage = ({
         posts.map(({ node }) => {
           const title = node.frontmatter.title || node.fields.slug
           return (
-            <Card border="light" as="article" key={node.fields.slug}>
+            <Card
+              border="light"
+              as="article"
+              key={node.fields.slug}
+              style={{ marginBottom: '50px' }}
+            >
               <Card.Header>{node.frontmatter.date}</Card.Header>
               <Card.Body>
                 <Card.Title as="h3">
