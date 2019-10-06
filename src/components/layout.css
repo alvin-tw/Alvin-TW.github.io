@@ -2,6 +2,16 @@
   padding: 50px 20px;
 }
 
+.avatar {
+  width: 150px;
+  height: 150px;
+  margin: 25px 0;
+}
+
+.social-media a {
+  margin: 5px;
+}
+
 footer {
   position: absolute;
   bottom: 10px;

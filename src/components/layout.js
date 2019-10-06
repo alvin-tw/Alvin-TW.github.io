@@ -9,6 +9,7 @@ import {
 
 import Header from './header'
 import Footer from './footer'
+import LeftSidebar from './left-sidebar'
 import './layout.css'
 
 const Layout = ({ children }) => (
@@ -22,23 +23,17 @@ const Layout = ({ children }) => (
     <Container fluid>
       <Row>
         <Col
-          md={2}
+          md={3}
           className="column-container left-sidebar text-center"
         >
-          left-sidebar
+          <LeftSidebar />
         </Col>
         <Col
           as="main"
-          md={8}
+          md={9}
           className="column-container"
         >
           {children}
-        </Col>
-        <Col
-          md={2}
-          className="column-container right-sidebar text-center"
-        >
-          right-sidebar
         </Col>
       </Row>
     </Container>
