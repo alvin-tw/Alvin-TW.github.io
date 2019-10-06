@@ -1,14 +1,12 @@
 import React from 'react'
 import { Link, graphql } from 'gatsby'
 
-import { Card } from 'react-bootstrap'
+import { Badge, Card } from 'react-bootstrap'
 
 import Layout from '@components/layout'
 import SEO from '@components/seo'
 
-const IndexPage = ({
-  data,
-}) => {
+const IndexPage = ({ data }) => {
   const posts = data.allMarkdownRemark.edges
 
   return (
@@ -16,31 +14,44 @@ const IndexPage = ({
       <SEO title="Home" />
       {
         posts.map(({ node }) => {
-          const title = node.frontmatter.title || node.fields.slug
+          const {
+            excerpt,
+            frontmatter: { tags, title, date },
+            fields: { slug },
+          } = node
           return (
             <Card
               border="light"
               as="article"
-              key={node.fields.slug}
+              key={slug}
               style={{ marginBottom: '50px' }}
             >
-              <Card.Header>{node.frontmatter.date}</Card.Header>
-              <Card.Body>
-                <Card.Title as="h3">
+              <Card.Header>{date}</Card.Header>
+              <Card.Body>  
+                <div className="tags">
+                  {
+                    tags.split(/,\s+/).map(tag =>
+                      <Badge
+                        variant="info"
+                        style={{ margin: '0 2px', fontSize: '1rem' }}
+                      >
+                        {tag}
+                      </Badge>
+                    )
+                  }
+                </div>
+                <Card.Title as="h1">
                   <Link
                     style={{ textDecoration: 'none' }}
-                    to={node.fields.slug}
+                    to={slug}
                   >
-                    {title}
+                    {title || slug}
                   </Link>
                 </Card.Title>
                 <Card.Text
                   as="section"
                   style={{ textAlign: 'justfy' }}
-                  dangerouslySetInnerHTML={{
-                    __html: node.frontmatter.description
-                      || node.excerpt,
-                  }}
+                  dangerouslySetInnerHTML={{ __html: excerpt }}
                 >
                 </Card.Text>
               </Card.Body>
@@ -71,6 +82,7 @@ export const pageQuery = graphql`
           frontmatter {
             date(formatString: "MMMM DD, YYYY")
             title
+            tags
           }
         }
       }
