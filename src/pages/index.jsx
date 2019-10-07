@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link, graphql } from 'gatsby'
-
 import { Badge, Card } from 'react-bootstrap'
 
 import Layout from '@components/layout'
@@ -26,20 +25,24 @@ const IndexPage = ({ data }) => {
               key={slug}
               style={{ marginBottom: '50px' }}
             >
-              <Card.Header>{date}</Card.Header>
+              <Card.Header as="h4">{date}</Card.Header>
               <Card.Body>  
-                <div className="tags">
-                  {
-                    tags.split(/,\s+/).map(tag =>
-                      <Badge
-                        variant="info"
-                        style={{ margin: '0 2px', fontSize: '1rem' }}
-                      >
-                        {tag}
-                      </Badge>
-                    )
-                  }
-                </div>
+                {
+                  tags.map(tag =>
+                    <Badge
+                      key={ `${tag}_${title}` }
+                      className="tag"
+                      variant="info"
+                      style={{
+                        margin: '2px',
+                        fontSize: '1rem',
+                        fontWeight: 'normal'
+                      }}
+                    >
+                      {tag}
+                    </Badge>
+                  )
+                }
                 <Card.Title as="h1">
                   <Link
                     style={{ textDecoration: 'none' }}

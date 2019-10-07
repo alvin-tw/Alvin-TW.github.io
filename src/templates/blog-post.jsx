@@ -3,7 +3,7 @@ import { Link, graphql } from 'gatsby'
 
 import Layout from '@components/layout'
 
-const Template = ({ data, pageContext }) => {
+const BlogPostTemplate = ({ data, pageContext }) => {
   const {
     markdownRemark: {
       frontmatter: {
@@ -20,7 +20,7 @@ const Template = ({ data, pageContext }) => {
         <header>
           <Link to="/">Go back to home</Link>
           <h1>{title}</h1>
-          <p>{date}</p>
+          <h4>{date}</h4>
         </header>
         <section
           className="blog-post-content"
@@ -31,6 +31,8 @@ const Template = ({ data, pageContext }) => {
           style={{
             display: 'flex',
             justifyContent: 'space-between',
+            fontSize: '1.3rem',
+            fontStyle: 'italic',
           }}
         >
           <span>
@@ -41,6 +43,7 @@ const Template = ({ data, pageContext }) => {
                   <Link
                     to={prev.fields.slug}
                     rel="prev"
+                    style={{ textDecoration: 'none' }}
                   >
                     {prev.frontmatter.title}
                   </Link>
@@ -56,6 +59,7 @@ const Template = ({ data, pageContext }) => {
                   <Link
                     to={next.fields.slug}
                     rel="next"
+                    style={{ textDecoration: 'none' }}
                   >
                     {next.frontmatter.title}
                   </Link>
@@ -69,7 +73,7 @@ const Template = ({ data, pageContext }) => {
   )
 }
 
-export default Template
+export default BlogPostTemplate
 
 export const pageQuery = graphql`
   query($slug: String!) {
