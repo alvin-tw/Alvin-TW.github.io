@@ -15,12 +15,13 @@ const Header = () =>  (
     bg="dark"
     variant="dark"
   >
-    <Navbar.Brand as="div"><Link to="/">Gastsby Home</Link></Navbar.Brand>
+    <Navbar.Brand as="div" style={{fontSize: '2rem'}}>Gastsby Home</Navbar.Brand>
     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
     <Navbar.Collapse id="responsive-navbar-nav">
-      <Nav className="ml-auto">
-        <Link to="/tags">Tags</Link>
-        <Link to="/about">About</Link>
+      <Nav className="ml-auto" style={{ fontSize: '1.8rem' }}>
+        <Link className="nav-link" to="/">Home</Link>
+        <Link className="nav-link" to="/tags">Tags</Link>
+        <Link className="nav-link" to="/about">About</Link>
       </Nav>
     </Navbar.Collapse>
   </Navbar>
