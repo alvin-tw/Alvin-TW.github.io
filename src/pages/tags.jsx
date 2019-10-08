@@ -18,11 +18,13 @@ const TagsPage = ({
     <Helmet title={title} />
     <div>
       <h1>Tags</h1>
-      <ul>
+      <ul style={{fontSize: '1.35rem'}}>
         {
           group.map(tag => (
             <li key={tag.fieldValue}>
-              <Link to={`/tags/${kebabCase(tag.fieldValue)}/`}>
+              <Link
+                style={{textDecoration: 'none'}}
+                to={`/tags/${kebabCase(tag.fieldValue)}/`}>
                 {tag.fieldValue} ({tag.totalCount})
             </Link>
             </li>

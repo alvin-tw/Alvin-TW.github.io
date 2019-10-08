@@ -5,6 +5,8 @@ import { Badge, Card } from 'react-bootstrap'
 import Layout from '@components/layout'
 import SEO from '@components/seo'
 
+import './styles.scss'
+
 const IndexPage = ({ data }) => {
   const posts = data.allMarkdownRemark.edges
 
@@ -23,41 +25,43 @@ const IndexPage = ({ data }) => {
               border="light"
               as="article"
               key={slug}
-              style={{ marginBottom: '50px' }}
+              style={{ marginBottom: '15px' }}
             >
               <Card.Header as="h4">{date}</Card.Header>
-              <Card.Body>  
-                {
-                  tags.map(tag =>
-                    <Badge
-                      key={ `${tag}_${title}` }
-                      className="tag"
-                      variant="info"
-                      style={{
-                        margin: '2px',
-                        fontSize: '1rem',
-                        fontWeight: 'normal'
-                      }}
-                    >
-                      {tag}
-                    </Badge>
-                  )
-                }
-                <Card.Title as="h1">
-                  <Link
-                    style={{ textDecoration: 'none' }}
-                    to={slug}
-                  >
-                    {title || slug}
-                  </Link>
-                </Card.Title>
-                <Card.Text
-                  as="section"
-                  style={{ textAlign: 'justfy' }}
-                  dangerouslySetInnerHTML={{ __html: excerpt }}
+               <Link
+                  style={{ textDecoration: 'none' }}
+                  to={slug}
                 >
-                </Card.Text>
-              </Card.Body>
+                <Card.Body>  
+                  {
+                    tags.map(tag =>
+                      <Badge
+                        key={ `${tag}_${title}` }
+                        className="tag"
+                        variant="info"
+                        style={{
+                          margin: '2px',
+                          fontSize: '1rem',
+                          fontWeight: 'normal'
+                        }}
+                      >
+                        {tag}
+                      </Badge>
+                    )
+                  }
+                  <Card.Title as="h1">
+                  
+                      {title || slug}
+                    {/* </Link> */}
+                  </Card.Title>
+                  <Card.Text
+                    as="section"
+                    style={{ textAlign: 'justfy', color: '#666' }}
+                    dangerouslySetInnerHTML={{ __html: excerpt }}
+                  >
+                  </Card.Text>
+                </Card.Body>
+              </Link>
             </Card>
           )
         })

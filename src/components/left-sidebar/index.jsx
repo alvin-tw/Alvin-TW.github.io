@@ -7,7 +7,7 @@ import avatar from '@images/gatsby-icon.png'
 const LeftSidebar = () => (
   <>
     <Image className="avatar" src={avatar} />
-    <div className="author-info">
+    <div className="bio">
       <h2>Alvin</h2>
       <h4>Front-end Enginer</h4>
       <p>5+ years of work experience</p>

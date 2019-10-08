@@ -18,12 +18,12 @@ const BlogPostTemplate = ({ data, pageContext }) => {
     <Layout>
       <article className="blog-post">
         <header>
-          <Link to="/">Go back to home</Link>
           <h1>{title}</h1>
-          <h4>{date}</h4>
+          <h5 style={{color: '#666'}}>{date}</h5>
         </header>
         <section
           className="blog-post-content"
+          style={{fontSize: '1.1rem'}}
           dangerouslySetInnerHTML={{ __html: html }}
         />
         <hr />
