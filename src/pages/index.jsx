@@ -1,11 +1,15 @@
 import React from 'react'
-import { Link, graphql } from 'gatsby'
-import { Badge, Card } from 'react-bootstrap'
+import {
+  Link,
+  graphql,
+} from 'gatsby'
+import {
+  Badge,
+  Card,
+} from 'react-bootstrap'
 
 import Layout from '@components/layout'
 import SEO from '@components/seo'
-
-import './styles.scss'
 
 const IndexPage = ({ data }) => {
   const posts = data.allMarkdownRemark.edges
@@ -28,30 +32,30 @@ const IndexPage = ({ data }) => {
               style={{ marginBottom: '15px' }}
             >
               <Card.Header as="h4">{date}</Card.Header>
-               <Link
-                  style={{ textDecoration: 'none' }}
-                  to={slug}
-                >
-                <Card.Body>  
+              <Link
+                style={{ textDecoration: 'none' }}
+                to={slug}
+              >
+                <Card.Body>
                   {
-                    tags.map(tag =>
+                    tags.map(tag => (
                       <Badge
-                        key={ `${tag}_${title}` }
+                        key={`${tag}_${title}`}
                         className="tag"
                         variant="info"
                         style={{
                           margin: '2px',
                           fontSize: '1rem',
-                          fontWeight: 'normal'
+                          fontWeight: 'normal',
                         }}
                       >
                         {tag}
                       </Badge>
-                    )
+                    ))
                   }
                   <Card.Title as="h1">
-                  
-                      {title || slug}
+
+                    {title || slug}
                     {/* </Link> */}
                   </Card.Title>
                   <Card.Text

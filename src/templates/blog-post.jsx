@@ -1,17 +1,44 @@
 import React from 'react'
-import { Link, graphql } from 'gatsby'
+import styled from 'styled-components'
+import {
+  Link,
+  graphql,
+} from 'gatsby'
 
 import Layout from '@components/layout'
+
+const Date = styled.h5`
+  color: #666;
+`
+
+const Section = styled.section`
+  font-size: 1.1rem;
+`
+
+const LinkGroup = styled.div`
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.3rem;
+  font-style: italic;
+`
+
+const LinkWithoutDecoration = styled(Link)`
+  text-decoration: none;
+  &:hover {
+    text-decoration: none;
+  }
+`
 
 const BlogPostTemplate = ({ data, pageContext }) => {
   const {
     markdownRemark: {
       frontmatter: {
         title,
-        date
+        date,
       },
-      html
-  }} = data
+      html,
+    },
+  } = data
   const { prev, next } = pageContext
 
   return (
@@ -19,34 +46,24 @@ const BlogPostTemplate = ({ data, pageContext }) => {
       <article className="blog-post">
         <header>
           <h1>{title}</h1>
-          <h5 style={{color: '#666'}}>{date}</h5>
+          <Date>{date}</Date>
         </header>
-        <section
-          className="blog-post-content"
-          style={{fontSize: '1.1rem'}}
+        <Section
           dangerouslySetInnerHTML={{ __html: html }}
         />
         <hr />
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            fontSize: '1.3rem',
-            fontStyle: 'italic',
-          }}
-        >
+        <LinkGroup>
           <span>
             {
               prev && (
                 <>
                   {'Previous: '}
-                  <Link
+                  <LinkWithoutDecoration
                     to={prev.fields.slug}
                     rel="prev"
-                    style={{ textDecoration: 'none' }}
                   >
                     {prev.frontmatter.title}
-                  </Link>
+                  </LinkWithoutDecoration>
                 </>
               )
             }
@@ -56,18 +73,17 @@ const BlogPostTemplate = ({ data, pageContext }) => {
               next && (
                 <>
                   {'Next: '}
-                  <Link
+                  <LinkWithoutDecoration
                     to={next.fields.slug}
                     rel="next"
-                    style={{ textDecoration: 'none' }}
                   >
                     {next.frontmatter.title}
-                  </Link>
+                  </LinkWithoutDecoration>
                 </>
               )
             }
           </span>
-        </div>
+        </LinkGroup>
       </article>
     </Layout>
   )

@@ -20,14 +20,14 @@
     "gatsby-transformer-remark": "^2.6.27",
     "gatsby-transformer-sharp": "^2.2.20",
     "lodash": "^4.17.15",
-    "node-sass": "^4.12.0",
     "prismjs": "^1.17.1",
     "prop-types": "^15.7.2",
     "react": "^16.10.1",
     "react-bootstrap": "^1.0.0-beta.12",
     "react-dom": "^16.10.1",
     "react-helmet": "^5.2.1",
-    "react-icons": "^3.7.0"
+    "react-icons": "^3.7.0",
+    "styled-components": "^5.1.0"
   },
   "devDependencies": {
     "eslint-config-airbnb": "^18.0.1",
@@ -42,7 +42,7 @@
     "develop": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
     "eslint": "eslint ./src/**/*.{js,jsx}",
-    "start": "npm run develop",
+    "start": "yarn run develop",
     "serve": "gatsby serve",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing \""
   },

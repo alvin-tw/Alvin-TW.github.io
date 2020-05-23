@@ -1,31 +1,38 @@
 import React from 'react'
+import styled from 'styled-components'
 import { Link } from 'gatsby'
-
 import {
   Nav,
   Navbar,
 } from 'react-bootstrap'
 
-import './style.scss'
+const NavElm = styled(Nav)`
+  font-size: 1.65rem;
+`
 
-const Header = () =>  (
+const LinkElm = styled(Link)`
+  &:hover {
+    transform: scale(1.1);
+  }
+`
+
+const Header = () => (
   <Navbar
-    as='header'
-    collapseOnSelect
+    as="header"
     sticky="top"
     expand="lg"
     bg="dark"
     variant="dark"
-    style={{fontWeight: 'bold'}}
+    collapseOnSelect
   >
-    <Navbar.Brand as="div" style={{fontSize: '2.25rem'}}>Gastsby Home</Navbar.Brand>
+    <Navbar.Brand as="div" style={{ fontSize: '2.25rem' }}>Gastsby Home</Navbar.Brand>
     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
     <Navbar.Collapse id="responsive-navbar-nav">
-      <Nav className="ml-auto" style={{ fontSize: '1.65rem' }}>
-        <Link className="nav-link" to="/">Home</Link>
-        <Link className="nav-link" to="/tags">Tags</Link>
-        <Link className="nav-link" to="/about">About</Link>
-      </Nav>
+      <NavElm className="ml-auto">
+        <LinkElm className="nav-link" to="/">Home</LinkElm>
+        <LinkElm className="nav-link" to="/tags">Tags</LinkElm>
+        <LinkElm className="nav-link" to="/about">About</LinkElm>
+      </NavElm>
     </Navbar.Collapse>
   </Navbar>
 )
