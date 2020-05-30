@@ -2,21 +2,35 @@ import React from 'react'
 import {
   Link,
   graphql,
+  navigate,
 } from 'gatsby'
 import {
   Badge,
   Card,
+  Pagination,
 } from 'react-bootstrap'
 
 import Layout from '@components/layout'
 import SEO from '@components/seo'
 
-const IndexPage = ({ data }) => {
-  const posts = data.allMarkdownRemark.edges
-
+const BlogPostListTemplate = ({
+  data: {
+    allMarkdownRemark: {
+      edges: posts,
+    },
+  },
+  pageContext: {
+    currentPage,
+    numPages,
+  },
+}) => {
+  const isFirst = currentPage === 1
+  const isLast = currentPage === numPages
+  const prevPage = currentPage - 1 === 1 ? '/' : `page/${(currentPage - 1)}`
+  const nextPage = (currentPage + 1)
   return (
     <Layout>
-      <SEO title="Home" />
+      <SEO title="Alvin's Notes" />
       {
         posts.map(({ node }) => {
           const {
@@ -62,28 +76,66 @@ const IndexPage = ({ data }) => {
                     as="section"
                     style={{ textAlign: 'justfy', color: '#666' }}
                     dangerouslySetInnerHTML={{ __html: excerpt }}
-                  >
-                  </Card.Text>
+                  />
                 </Card.Body>
               </Link>
             </Card>
           )
         })
       }
+      <Pagination style={{ display: 'flex', justifyContent: 'center' }}>
+        {
+          !isFirst && (
+            <>
+              <Pagination.First onClick={() => { navigate('/') }} />
+              <Pagination.Prev onClick={() => { navigate(prevPage) }} />
+            </>
+          )
+        }
+        {
+          Array.from({ length: numPages }, (_, index) => {
+            const pageIndex = index + 1
+            return (
+              <Pagination.Item
+                active={currentPage === pageIndex}
+                onClick={() => {
+                  navigate(pageIndex === 1
+                    ? '/'
+                    : `/page/${pageIndex}`)
+                }}
+              >
+                {pageIndex}
+              </Pagination.Item>
+            )
+          })
+        }
+        {
+          !isLast && (
+            <>
+              <Pagination.Next onClick={() => { navigate(`/page/${nextPage}`) }} />
+              <Pagination.Last onClick={() => { navigate(`/page/${numPages}`) }} />
+            </>
+          )
+        }
+      </Pagination>
     </Layout>
   )
 }
 
-export default IndexPage
+export default BlogPostListTemplate
 
 export const pageQuery = graphql`
-  query {
+  query ($skip: Int!, $limit: Int!) {
     site {
       siteMetadata {
         title
       }
     }
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+    allMarkdownRemark(
+      sort: { fields: [frontmatter___date], order: DESC }
+      limit: $limit
+      skip: $skip
+  ) {
       edges {
         node {
           excerpt
