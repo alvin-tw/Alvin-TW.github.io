@@ -6,13 +6,20 @@ import {
   Navbar,
 } from 'react-bootstrap'
 
-const NavElm = styled(Nav)`
-  font-size: 1.65rem;
+const StyledNavbarBrand = styled(Navbar.Brand)`
+  font-size: 2rem;
 `
 
-const LinkElm = styled(Link)`
+const StyledNav = styled(Nav)`
+  font-size: 1.2rem;
+`
+
+const StyledLink = styled(Link)`
+  margin: 10px;
+  color: #FFF;
+  font-weight: bold;
   &:hover {
-    transform: scale(1.1);
+    color: #FFF;
   }
 `
 
@@ -25,14 +32,15 @@ const Header = () => (
     variant="dark"
     collapseOnSelect
   >
-    <Navbar.Brand as="div" style={{ fontSize: '2.25rem' }}>Gastsby Home</Navbar.Brand>
-    <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-    <Navbar.Collapse id="responsive-navbar-nav">
-      <NavElm className="ml-auto">
-        <LinkElm className="nav-link" to="/">Home</LinkElm>
-        <LinkElm className="nav-link" to="/tags">Tags</LinkElm>
-        <LinkElm className="nav-link" to="/about">About</LinkElm>
-      </NavElm>
+    <StyledNavbarBrand as="div">
+      <StyledLink to="/">{'Alvin\'s Notes'}</StyledLink>
+    </StyledNavbarBrand>
+    <Navbar.Toggle />
+    <Navbar.Collapse>
+      <StyledNav className="ml-auto">
+        <StyledLink to="/articles">所有文章</StyledLink>
+        <StyledLink to="/tags">標籤列表</StyledLink>
+      </StyledNav>
     </Navbar.Collapse>
   </Navbar>
 )
