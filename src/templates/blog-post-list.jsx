@@ -1,89 +1,44 @@
 import React from 'react'
-import {
-  Link,
-  graphql,
-  navigate,
-} from 'gatsby'
-import {
-  Badge,
-  Card,
-  Pagination,
-} from 'react-bootstrap'
+import { Link, graphql, navigate } from 'gatsby'
+import { Card, Pagination } from 'react-bootstrap'
 
 import Layout from '@components/layout'
 import SEO from '@components/seo'
+import Tags from '@components/tags'
 
 const BlogPostListTemplate = ({
-  data: {
-    allMarkdownRemark: {
-      edges: posts,
-    },
-  },
-  pageContext: {
-    currentPage,
-    numPages,
-  },
+  data: { allMarkdownRemark: { edges: posts } },
+  pageContext: { currentPage, numPages },
 }) => {
   const isFirst = currentPage === 1
   const isLast = currentPage === numPages
   const prevPage = currentPage - 1 === 1 ? '/' : `page/${(currentPage - 1)}`
   const nextPage = (currentPage + 1)
+
   return (
     <Layout>
-      <SEO title="Alvin's Notes" />
+      <SEO title="Alvin's Blog" />
       {
-        posts.map(({ node }) => {
-          const {
+        posts.map(({
+          node: {
             excerpt,
             frontmatter: { tags, title, date },
             fields: { slug },
-          } = node
-          return (
-            <Card
-              border="light"
-              as="article"
-              key={slug}
-              style={{ marginBottom: '15px' }}
-            >
-              <Card.Header as="h4">{date}</Card.Header>
-              <Link
-                style={{ textDecoration: 'none' }}
-                to={slug}
-              >
-                <Card.Body>
-                  {
-                    tags.map(tag => (
-                      <Badge
-                        key={`${tag}_${title}`}
-                        className="tag"
-                        variant="info"
-                        style={{
-                          margin: '2px',
-                          fontSize: '1rem',
-                          fontWeight: 'normal',
-                        }}
-                      >
-                        {tag}
-                      </Badge>
-                    ))
-                  }
-                  <Card.Title as="h1">
-
-                    {title || slug}
-                    {/* </Link> */}
-                  </Card.Title>
-                  <Card.Text
-                    as="section"
-                    style={{ textAlign: 'justfy', color: '#666' }}
-                    dangerouslySetInnerHTML={{ __html: excerpt }}
-                  />
-                </Card.Body>
+          },
+        }) => (
+          <Card key={slug} border="light" className="mb-3 px-3">
+            <Card.Body>
+              <Link className="text-decoration-none" to={slug}>
+                <Card.Title className="text-body" as="h2">{title || slug}</Card.Title>
+                <Card.Subtitle className="text-muted">{date}</Card.Subtitle>
+                <Card.Text className="my-3 text-body" dangerouslySetInnerHTML={{ __html: excerpt }} />
               </Link>
-            </Card>
-          )
-        })
+              <Tags tags={tags} />
+            </Card.Body>
+          </Card>
+        ))
       }
-      <Pagination style={{ display: 'flex', justifyContent: 'center' }}>
+      <Pagination className="float-right">
         {
           !isFirst && (
             <>

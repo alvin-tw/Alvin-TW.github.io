@@ -1,45 +1,26 @@
 import React from 'react'
-import styled from 'styled-components'
-import { Image } from 'react-bootstrap'
+import { Card } from 'react-bootstrap'
 import { FaGithub, FaLinkedin } from 'react-icons/fa'
 
 import avatar from '@images/gatsby-icon.png'
 
-const Avatar = styled(Image)`
-  width: 150px;
-  height: 150px;
-  margin: 25px 0;
-`
-
-const SocialMedia = styled.div`
-  margin: 5px;
-`
-
 const LeftSidebar = () => (
-  <>
-    <Avatar src={avatar} />
-    <div className="bio">
-      <h2>Alvin</h2>
-      <h4>Front-end Enginer</h4>
-      <p>5+ years of work experience</p>
-      <SocialMedia>
-        <a
-          href="http://githubUrl.com"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <FaGithub size={32} />
-        </a>
-        <a
-          href="http://linkInUrl.com"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <FaLinkedin size={32} />
-        </a>
-      </SocialMedia>
-    </div>
-  </>
+  <Card border="light" className="d-flex mb-3 p-3 align-items-center">
+    <Card.Img src={avatar} style={{ width: 125, height: 125 }} />
+    <Card.Body>
+      <Card.Title>Alvin</Card.Title>
+      <Card.Text>
+        <p>前端工程師</p>
+        <p>這裡用來紀錄開發心得與筆記，歡迎交流!</p>
+      </Card.Text>
+      <Card.Link href="http://githubUrl.com" target="_blank">
+        <FaGithub size={32} />
+      </Card.Link>
+      <Card.Link href="http://linkInUrl.com" target="_blank">
+        <FaLinkedin size={32} />
+      </Card.Link>
+    </Card.Body>
+  </Card>
 )
 
 export default LeftSidebar

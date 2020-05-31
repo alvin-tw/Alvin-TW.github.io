@@ -1,27 +1,6 @@
 import React from 'react'
-import styled from 'styled-components'
 import { Link } from 'gatsby'
-import {
-  Nav,
-  Navbar,
-} from 'react-bootstrap'
-
-const StyledNavbarBrand = styled(Navbar.Brand)`
-  font-size: 2rem;
-`
-
-const StyledNav = styled(Nav)`
-  font-size: 1.2rem;
-`
-
-const StyledLink = styled(Link)`
-  margin: 10px;
-  color: #FFF;
-  font-weight: bold;
-  &:hover {
-    color: #FFF;
-  }
-`
+import { Nav, Navbar } from 'react-bootstrap'
 
 const Header = () => (
   <Navbar
@@ -32,15 +11,15 @@ const Header = () => (
     variant="dark"
     collapseOnSelect
   >
-    <StyledNavbarBrand as="div">
-      <StyledLink to="/">{'Alvin\'s Notes'}</StyledLink>
-    </StyledNavbarBrand>
+    <Navbar.Brand>
+      <Link to="/" className="h2 text-white font-weight-bold">{'Alvin\'s Blog'}</Link>
+    </Navbar.Brand>
     <Navbar.Toggle />
     <Navbar.Collapse>
-      <StyledNav className="ml-auto">
-        <StyledLink to="/articles">所有文章</StyledLink>
-        <StyledLink to="/tags">標籤列表</StyledLink>
-      </StyledNav>
+      <Nav className="ml-auto">
+        <Link to="/archive" className="m-2 text-white">所有文章</Link>
+        <Link to="/tags" className="m-2 text-white">標籤列表</Link>
+      </Nav>
     </Navbar.Collapse>
   </Navbar>
 )

@@ -1,50 +1,26 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import styled from 'styled-components'
-import {
-  Container,
-  Col,
-  Row,
-} from 'react-bootstrap'
+import { Container, Col, Row } from 'react-bootstrap'
 
 import Header from './header'
 import Footer from './footer'
 import LeftSidebar from './left-sidebar'
 
-const LayoutElm = styled.div`
-  position: relative;
-  minHeight: 100vh;
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  background: #F5F5DC;
-`
-
-const RowElm = styled(Row)`
-  padding: 50px 20px;
-`
-
 const Layout = ({ children }) => (
-  <LayoutElm>
+  <div>
     <Header />
     <Container fluid>
-      <RowElm>
-        <Col
-          md={3}
-          className="left-sidebar text-center"
-        >
+      <Row className="my-5">
+        <Col md={3} className="left-sidebar text-center">
           <LeftSidebar />
         </Col>
-        <Col
-          as="main"
-          md={9}
-        >
+        <Col md={9} as="main">
           {children}
         </Col>
-      </RowElm>
+      </Row>
     </Container>
     <Footer />
-  </LayoutElm>
+  </div>
 )
 
 Layout.propTypes = {

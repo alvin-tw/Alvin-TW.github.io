@@ -1,93 +1,55 @@
 import React from 'react'
-import styled from 'styled-components'
-import {
-  Link,
-  graphql,
-} from 'gatsby'
+import { Link, graphql } from 'gatsby'
+import { Card } from 'react-bootstrap'
 
 import Layout from '@components/layout'
+import Tags from '@components/tags'
 
-const Date = styled.h5`
-  color: #666;
-`
-
-const Section = styled.section`
-  font-size: 1.1rem;
-`
-
-const LinkGroup = styled.div`
-  display: flex;
-  justify-content: space-between;
-  font-size: 1.3rem;
-  font-style: italic;
-`
-
-const LinkWithoutDecoration = styled(Link)`
-  text-decoration: none;
-  &:hover {
-    text-decoration: none;
-  }
-`
-
-const BlogPostTemplate = ({ data, pageContext }) => {
-  const {
+const BlogPostTemplate = ({
+  data: {
     markdownRemark: {
-      frontmatter: {
-        title,
-        date,
-      },
+      frontmatter: { tags, title, date },
       html,
     },
-  } = data
-  const { prev, next } = pageContext
-
-  return (
-    <Layout>
-      <article className="blog-post">
-        <header>
-          <h1>{title}</h1>
-          <Date>{date}</Date>
-        </header>
-        <Section
-          dangerouslySetInnerHTML={{ __html: html }}
-        />
+  },
+  pageContext: { prev, next },
+}) => (
+  <Layout>
+    <Card border="light" className="px-3 pb-3">
+      <Card.Body>
+        <Card.Title as="h2">{title}</Card.Title>
+        <Card.Subtitle className="text-muted">
+          <span className="pr-3">{date}</span>
+          <Tags tags={tags} />
+        </Card.Subtitle>
+        <Card.Text dangerouslySetInnerHTML={{ __html: html }} />
         <hr />
-        <LinkGroup>
+        <div className="d-flex justify-content-between">
           <span>
             {
-              prev && (
-                <>
-                  {'Previous: '}
-                  <LinkWithoutDecoration
-                    to={prev.fields.slug}
-                    rel="prev"
-                  >
-                    {prev.frontmatter.title}
-                  </LinkWithoutDecoration>
-                </>
-              )
-            }
+            prev && (
+              <>
+                <span className="font-weight-bold">{'上一篇: '}</span>
+                <Link to={prev.fields.slug}>{prev.frontmatter.title}</Link>
+              </>
+            )
+          }
           </span>
           <span>
             {
-              next && (
-                <>
-                  {'Next: '}
-                  <LinkWithoutDecoration
-                    to={next.fields.slug}
-                    rel="next"
-                  >
-                    {next.frontmatter.title}
-                  </LinkWithoutDecoration>
-                </>
-              )
-            }
+            next && (
+              <>
+                <span className="font-weight-bold">{'下一篇: '}</span>
+                <Link to={next.fields.slug}>{next.frontmatter.title}</Link>
+              </>
+            )
+          }
           </span>
-        </LinkGroup>
-      </article>
-    </Layout>
-  )
-}
+        </div>
+      </Card.Body>
+    </Card>
+  </Layout>
+)
 
 export default BlogPostTemplate
 
@@ -98,6 +60,7 @@ export const pageQuery = graphql`
       frontmatter {
         date(formatString: "MMMM DD, YYYY")
         title
+        tags
       }
     }
   }

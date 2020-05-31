@@ -1,22 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import styled from 'styled-components'
 import kebabCase from 'lodash/kebabCase'
 import { Helmet } from 'react-helmet'
-import {
-  Link,
-  graphql,
-} from 'gatsby'
+import { Link, graphql } from 'gatsby'
 
 import Layout from '@components/layout'
-
-const TagGroup = styled.ul`
-font-Size: 1.35rem;
-`
-
-const LinkElm = styled(Link)`
-  text-decoration: none;
-`
 
 const TagsPage = ({
   data: {
@@ -30,17 +18,17 @@ const TagsPage = ({
     <Helmet title={title} />
     <div>
       <h1>Tags</h1>
-      <TagGroup>
+      <div className="text-decoration-none">
         {
           group.map(tag => (
             <li key={tag.fieldValue}>
-              <LinkElm to={`/tags/${kebabCase(tag.fieldValue)}/`}>
+              <Link to={`/tags/${kebabCase(tag.fieldValue)}/`}>
                 {`${tag.fieldValue} ${tag.totalCount}`}
-              </LinkElm>
+              </Link>
             </li>
           ))
         }
-      </TagGroup>
+      </div>
     </div>
   </Layout>
 )
@@ -52,7 +40,7 @@ TagsPage.propTypes = {
         PropTypes.shape({
           fieldValue: PropTypes.string.isRequired,
           totalCount: PropTypes.number.isRequired,
-        }).isRequired
+        }).isRequired,
       ),
     }),
     site: PropTypes.shape({
