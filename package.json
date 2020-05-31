@@ -1,9 +1,9 @@
 {
-  "name": "gatsby-starter-default",
+  "name": "gatsby-bootstrap-blog",
   "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
+  "description": "Build with Gatsby and React Bootstrap inspired by Gatsby's default starter.",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "Alvin <bestkun0401@gmail.com>",
   "dependencies": {
     "bootstrap": "^4.3.1",
     "gatsby": "^2.15.28",
@@ -19,9 +19,7 @@
     "gatsby-source-filesystem": "^2.1.28",
     "gatsby-transformer-remark": "^2.6.27",
     "gatsby-transformer-sharp": "^2.2.20",
-    "lodash": "^4.17.15",
     "prismjs": "^1.17.1",
-    "prop-types": "^15.7.2",
     "react": "^16.10.1",
     "react-bootstrap": "^1.0.0-beta.12",
     "react-dom": "^16.10.1",
@@ -42,14 +40,10 @@
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
     "eslint": "eslint ./src/**/*.{js,jsx}",
     "start": "yarn run develop",
-    "serve": "gatsby serve",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing \""
+    "serve": "gatsby serve"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
-  },
-  "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+    "url": "https://github.com/Alvin-TW/Alvin-TW.github.io"
   }
 }
