@@ -13,10 +13,10 @@ const LeftSidebar = () => (
         <p>前端工程師</p>
         <p>這裡用來紀錄開發心得與筆記，歡迎交流!</p>
       </Card.Text>
-      <Card.Link href="http://githubUrl.com" target="_blank">
+      <Card.Link href="https://github.com/Alvin-TW" target="_blank">
         <FaGithub size={32} />
       </Card.Link>
-      <Card.Link href="http://linkInUrl.com" target="_blank">
+      <Card.Link href="https://www.linkedin.com/in/Alvin-TW/" target="_blank">
         <FaLinkedin size={32} />
       </Card.Link>
     </Card.Body>

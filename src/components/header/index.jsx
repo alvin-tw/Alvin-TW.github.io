@@ -18,7 +18,6 @@ const Header = () => (
     <Navbar.Collapse>
       <Nav className="ml-auto">
         <Link to="/archive" className="m-2 text-white">所有文章</Link>
-        <Link to="/tags" className="m-2 text-white">標籤列表</Link>
       </Nav>
     </Navbar.Collapse>
   </Navbar>
