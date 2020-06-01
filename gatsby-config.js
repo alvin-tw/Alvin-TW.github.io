@@ -8,28 +8,26 @@ module.exports = {
   },
   plugins: [
     {
-      resolve: 'gatsby-source-filesystem',
-      options: {
-        path: `${__dirname}/content`,
-        name: 'content',
-      },
-    },
-    {
       resolve: 'gatsby-transformer-remark',
       options: {
         plugins: [
           {
             resolve: 'gatsby-remark-images',
             options: {
-              maxWidth: 500,
-              path: `${__dirname}/content/asserts`,
-              name: 'asserts',
+              maxWidth: 590,
             },
           },
           {
             resolve: 'gatsby-remark-prismjs',
           },
         ],
+      },
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'posts',
+        path: `${__dirname}/content/posts`,
       },
     },
     'gatsby-plugin-react-helmet',
