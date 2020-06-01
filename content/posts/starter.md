@@ -1,8 +1,12 @@
 ---
 title: Starter
-date: 2020-05-31
+date: 2020-05-31T00:00:00.000Z
 tags:
-- javascript
-- html
+  - javascript
+  - html
 ---
 Starter for test.
+
+
+
+![](test.png)
