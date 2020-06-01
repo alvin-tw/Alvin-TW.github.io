@@ -3,13 +3,15 @@ backend:
   repo: Alvin-TW/Alvin-TW.github.io
   branch: master
 
-media_folder: "content/asserts"
-public_folder: "../asserts"
+media_folder: content/asserts
+public_folder: /asserts
 
 collections:
   - name: blog
     label: Blog
     folder: content/posts
+    media_folder: ''
+    public_folder: ''
     create: true
     fields:
       - {label: "Title", name: "title", widget: "string"}
