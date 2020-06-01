@@ -1,6 +1,8 @@
 ---
 title: Starter
 date: 2020-05-31
-tags: ["html"]
+tags:
+- javascript
+- html
 ---
 Starter for test.
