@@ -1,7 +1,6 @@
 import React from 'react'
 import { Link, graphql } from 'gatsby'
 import { Card } from 'react-bootstrap'
-import Img from 'gatsby-image'
 
 import Layout from '@components/layout'
 import Tags from '@components/tags'
@@ -9,10 +8,7 @@ import Tags from '@components/tags'
 const BlogPostTemplate = ({
   data: {
     markdownRemark: {
-      frontmatter: {
-        tags, title, date,
-        featuredImage = null,
-      },
+      frontmatter: { tags, title, date },
       html,
     },
   },
@@ -26,9 +22,6 @@ const BlogPostTemplate = ({
           <span className="pr-3">{date}</span>
           <Tags tags={tags} />
         </Card.Subtitle>
-        {
-          featuredImage && <Img fluid={featuredImage.childImageSharp.fluid} />
-        }
         <Card.Text dangerouslySetInnerHTML={{ __html: html }} />
         <hr />
         <div className="d-flex justify-content-between">
@@ -68,13 +61,6 @@ export const pageQuery = graphql`
         date(formatString: "MMMM DD, YYYY")
         title
         tags
-        featuredImage {
-          childImageSharp {
-            fluid(maxWidth: 500) {
-              ...GatsbyImageSharpFluid
-            }
-          }
-        }
       }
     }
   }
