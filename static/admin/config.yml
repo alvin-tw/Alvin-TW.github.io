@@ -4,7 +4,7 @@ backend:
   branch: master
 
 media_folder: "content/asserts"
-public_folder: "/asserts"
+public_folder: "../asserts"
 
 collections:
   - name: blog
@@ -14,6 +14,12 @@ collections:
     fields:
       - {label: "Title", name: "title", widget: "string"}
       - {label: "Date", name: "date", widget: "datetime"}
-      - {label: "Thumbnail", name: "thumbnail", widget: "image", required: false}
-      - {label: "Tags", name: "tags", widget: "list", field: {name: tag, label: Tag, widget: string}}
+      - {label: "FeaturedImage", name: "featuredImage", widget: "image", required: false}
+      - {label: "Tags", name: "tags", widget: "select", multiple: true,
+          options: [
+            "javascript",
+            "html",
+            "css"
+          ]
+        }
       - {label: "Content", name: "body", widget: "markdown"}
