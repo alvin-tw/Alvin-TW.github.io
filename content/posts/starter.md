@@ -7,6 +7,4 @@ tags:
 ---
 Starter for test.
 
-
-
-![](test.png)
+![](/asserts/test.png)
