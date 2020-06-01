@@ -3,24 +3,17 @@ backend:
   repo: Alvin-TW/Alvin-TW.github.io
   branch: master
 
-media_folder: "static/images/uploads"
-public_folder: "/images/uploads"
+media_folder: "content/asserts"
+public_folder: "/asserts"
 
 collections:
   - name: blog
     label: Blog
-    folder: content/_posts
+    folder: content/posts
     create: true
     fields:
       - {label: "Title", name: "title", widget: "string"}
       - {label: "Date", name: "date", widget: "datetime"}
       - {label: "Thumbnail", name: "thumbnail", widget: "image", required: false}
-      - {label: "Tags", name: "tags", widget: "select", multiple: true,
-        options: [
-            "javaScript",
-            "css",
-            "html",
-          ],
-          default: ["javaScript"]
-        }
+      - {label: "Tags", name: "tags", widget: "list"}
       - {label: "Content", name: "body", widget: "markdown"}
