@@ -10,8 +10,6 @@ collections:
   - name: blog
     label: Blog
     folder: content/posts
-    media_folder: ''
-    public_folder: ''
     create: true
     fields:
       - {label: "Title", name: "title", widget: "string"}
