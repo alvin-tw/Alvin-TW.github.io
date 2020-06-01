@@ -14,13 +14,13 @@ collections:
     fields:
       - {label: "Title", name: "title", widget: "string"}
       - {label: "Date", name: "date", widget: "datetime"}
-      - {label: "Thumbnail", name: "thumbnail", widget: "image"}
+      - {label: "Thumbnail", name: "thumbnail", widget: "image", required: false}
       - {label: "Tags", name: "tags", widget: "select", multiple: true,
         options: [
-            "JavaScript",
-            "Css",
-            "Html",
+            "javaScript",
+            "css",
+            "html",
           ],
-          default: ["JavaScript"]
+          default: ["javaScript"]
         }
       - {label: "Content", name: "body", widget: "markdown"}
