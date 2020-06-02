@@ -3,6 +3,7 @@ import { Link, graphql } from 'gatsby'
 import { Card } from 'react-bootstrap'
 
 import Layout from '@components/layout'
+import SEO from '@components/seo'
 
 const Archive = ({ data: { allMarkdownRemark: { edges: posts } } }) => {
   const postsGroupByYear = posts.reduce((tempPosts, currentPost) => {
@@ -19,6 +20,7 @@ const Archive = ({ data: { allMarkdownRemark: { edges: posts } } }) => {
 
   return (
     <Layout>
+      <SEO title="所有文章" />
       <Card border="light">
         {
           Object.keys(postsGroupByYear)
@@ -45,11 +47,6 @@ export default Archive
 
 export const pageQuery = graphql`
   query {
-    site {
-      siteMetadata {
-        title
-      }
-    }
     allMarkdownRemark(
       limit: 2000
       sort: { fields: [frontmatter___date], order: DESC }

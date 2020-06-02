@@ -17,7 +17,7 @@ const BlogPostListTemplate = ({
 
   return (
     <Layout>
-      <SEO title="Alvin's Blog" />
+      <SEO title="首頁" />
       {
         posts.map(({
           node: {
@@ -52,6 +52,7 @@ const BlogPostListTemplate = ({
             const pageIndex = index + 1
             return (
               <Pagination.Item
+                key={pageIndex}
                 active={currentPage === pageIndex}
                 onClick={() => {
                   navigate(pageIndex === 1
@@ -81,11 +82,6 @@ export default BlogPostListTemplate
 
 export const pageQuery = graphql`
   query ($skip: Int!, $limit: Int!) {
-    site {
-      siteMetadata {
-        title
-      }
-    }
     allMarkdownRemark(
       sort: { fields: [frontmatter___date], order: DESC }
       limit: $limit

@@ -2,11 +2,12 @@ const path = require('path')
 
 module.exports = {
   siteMetadata: {
-    title: '',
-    description: '',
-    author: '',
+    title: 'Alvin\'s Blog',
+    description: '這裡用來紀錄開發心得與筆記，歡迎交流!',
+    author: 'Alvin',
   },
   plugins: [
+    'gatsby-transformer-remark-plaintext',
     {
       resolve: 'gatsby-transformer-remark',
       options: {
@@ -76,5 +77,11 @@ module.exports = {
       },
     },
     'gatsby-plugin-netlify-cms',
+    {
+      resolve: 'gatsby-plugin-disqus',
+      options: {
+        shortname: 'alvin-tw',
+      },
+    },
   ],
 }

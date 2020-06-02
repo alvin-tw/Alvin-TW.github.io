@@ -9,7 +9,7 @@ const LeftSidebar = () => (
     <Card.Img src={avatar} style={{ width: 125, height: 125 }} />
     <Card.Body>
       <Card.Title>Alvin</Card.Title>
-      <Card.Text>
+      <Card.Text as="div">
         <p>前端工程師</p>
         <p>這裡用來紀錄開發心得與筆記，歡迎交流!</p>
       </Card.Text>

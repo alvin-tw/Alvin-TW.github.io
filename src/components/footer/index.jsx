@@ -3,7 +3,7 @@ import React from 'react'
 const Footer = () => (
   <footer className="pb-2 text-center">
     <div>
-      {`©${new Date().getFullYear()} Alvin-TW. All Rights Reserved.`}
+      {`©${new Date().getFullYear()}. All Rights Reserved.`}
     </div>
     <div>
       {'Built with '}
