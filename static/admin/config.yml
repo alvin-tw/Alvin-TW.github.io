@@ -11,9 +11,12 @@ collections:
     label: Blog
     folder: content/posts
     create: true
+    slug: '{{slug}}'
+    identifier_field: fileName
     fields:
+      - {label: "File Name", name: "fileName", widget: "string"}
       - {label: "Title", name: "title", widget: "string"}
-      - {label: "Date", name: "date", widget: "datetime"}
+      - {label: 'Date', name: 'date', widget: 'datetime' }
       - {label: "Tags", name: "tags", widget: "select", multiple: true,
           options: [
             "javascript",
@@ -21,4 +24,4 @@ collections:
             "css"
           ]
         }
-      - {label: "Content", name: "body", widget: "markdown"}
+      - {label: "Body", name: "body", widget: "markdown"}
