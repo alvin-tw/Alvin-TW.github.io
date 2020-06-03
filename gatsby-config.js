@@ -7,6 +7,15 @@ module.exports = {
     author: 'Alvin',
   },
   plugins: [
+    {
+      resolve: 'gatsby-plugin-google-fonts',
+      options: {
+        fonts: [
+          'Noto Sans TC:400,700',
+        ],
+        display: 'swap',
+      },
+    },
     'gatsby-transformer-remark-plaintext',
     {
       resolve: 'gatsby-transformer-remark',
