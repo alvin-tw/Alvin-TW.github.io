@@ -9,7 +9,7 @@ const Layout = ({ children }) => (
   <div>
     <Header />
     <Container fluid>
-      <Row className="my-5">
+      <Row className="pt-3 pb-2">
         <Col md={3} className="left-sidebar text-center">
           <LeftSidebar />
         </Col>

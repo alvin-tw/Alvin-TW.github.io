@@ -7,7 +7,7 @@ import Layout from '@components/layout'
 import SEO from '@components/seo'
 import Tags from '@components/tags'
 
-const BlogPostTemplate = ({
+const PostTemplate = ({
   location: { pathname },
   data: {
     markdownRemark: {
@@ -69,7 +69,7 @@ const BlogPostTemplate = ({
 }
 
 
-export default BlogPostTemplate
+export default PostTemplate
 
 export const pageQuery = graphql`
   query($slug: String!) {

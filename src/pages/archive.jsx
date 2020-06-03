@@ -1,9 +1,7 @@
 import React from 'react'
 import { Link, graphql } from 'gatsby'
-import { Card } from 'react-bootstrap'
 
-import Layout from '@components/layout'
-import SEO from '@components/seo'
+import PageWrapper from './page-wrapper'
 
 const Archive = ({ data: { allMarkdownRemark: { edges: posts } } }) => {
   const postsGroupByYear = posts.reduce((tempPosts, currentPost) => {
@@ -19,15 +17,14 @@ const Archive = ({ data: { allMarkdownRemark: { edges: posts } } }) => {
   }, {})
 
   return (
-    <Layout>
-      <SEO title="所有文章" />
-      <Card border="light">
-        {
-          Object.keys(postsGroupByYear)
-            .sort((a, b) => b - a)
-            .map(year => (
-              <div key={`${year}`} className="px-4 py-2">
-                <h4>{year}</h4>
+    <PageWrapper title="所有文章">
+      {
+        Object.keys(postsGroupByYear)
+          .sort((a, b) => b - a)
+          .map(year => (
+            <div key={`${year}`}>
+              <h4>{year}</h4>
+              <ul>
                 {
                   postsGroupByYear[year].map(post => (
                     <li key={post.slug}>
@@ -35,11 +32,11 @@ const Archive = ({ data: { allMarkdownRemark: { edges: posts } } }) => {
                     </li>
                   ))
                 }
-              </div>
-            ))
-        }
-      </Card>
-    </Layout>
+              </ul>
+            </div>
+          ))
+      }
+    </PageWrapper>
   )
 }
 
