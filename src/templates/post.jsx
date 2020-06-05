@@ -29,17 +29,22 @@ const PostTemplate = ({
 
   return (
     <Layout>
-      <SEO title={title} description={plainText} isPost />
+      <SEO
+        title={title}
+        description={plainText.substr(0, 120)}
+        pathname={pathname}
+        isPost
+      />
       <Card border="light" className="px-3 pb-3">
         <Card.Body>
-          <Card.Title as="h2">{title}</Card.Title>
+          <Card.Title as="h2" className="font-weight-bold">{title}</Card.Title>
           <Card.Subtitle className="text-muted">
             <span className="pr-3">{date}</span>
             <Tags tags={tags} />
           </Card.Subtitle>
           <Card.Text dangerouslySetInnerHTML={{ __html: html }} />
           <hr />
-          <div className="d-flex justify-content-between">
+          <div className="d-flex justify-content-between mb-5">
             <span>
               {
               prev && (

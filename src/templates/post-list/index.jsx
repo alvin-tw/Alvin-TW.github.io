@@ -34,7 +34,7 @@ const PostListTemplate = ({
           <Card key={slug} border="light" className="mb-3 px-3">
             <Card.Body>
               <Link className="text-decoration-none" to={slug}>
-                <Card.Title className="text-body" as="h2">{title || slug}</Card.Title>
+                <Card.Title as="h2" className="text-body font-weight-bold">{title || slug}</Card.Title>
                 <Card.Subtitle className="text-muted">{date}</Card.Subtitle>
                 <Card.Text className="my-3 text-body" dangerouslySetInnerHTML={{ __html: excerpt }} />
               </Link>

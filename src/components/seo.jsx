@@ -5,6 +5,7 @@ import { useStaticQuery, graphql } from 'gatsby'
 const SEO = ({
   title,
   description = '',
+  pathname,
   meta = [],
   isPost = false,
 }) => {
@@ -16,6 +17,7 @@ const SEO = ({
             title
             description
             author
+            siteUrl
           }
         }
       }
@@ -45,6 +47,10 @@ const SEO = ({
         {
           property: 'og:site_name',
           content: site.siteMetadata.title,
+        },
+        {
+          property: 'og:site_url',
+          content: `${site.siteMetadata.siteUrl}${pathname || ''}`,
         },
         {
           property: 'og:description',

@@ -4,8 +4,11 @@ import { Link, graphql } from 'gatsby'
 
 import PageWrapper from './page-wrapper'
 
-const TagList = ({ data: { allMarkdownRemark: { group: tags } } }) => (
-  <PageWrapper title="標籤列表">
+const TagList = ({
+  location: { pathname },
+  data: { allMarkdownRemark: { group: tags } },
+}) => (
+  <PageWrapper title="標籤列表" pathname={pathname}>
     <ul>
       {
         tags.map(tag => (

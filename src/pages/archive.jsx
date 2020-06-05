@@ -3,7 +3,10 @@ import { Link, graphql } from 'gatsby'
 
 import PageWrapper from './page-wrapper'
 
-const Archive = ({ data: { allMarkdownRemark: { edges: posts } } }) => {
+const Archive = ({
+  location: { pathname },
+  data: { allMarkdownRemark: { edges: posts } },
+}) => {
   const postsGroupByYear = posts.reduce((tempPosts, currentPost) => {
     const {
       frontmatter: { date: year, title },
@@ -17,7 +20,7 @@ const Archive = ({ data: { allMarkdownRemark: { edges: posts } } }) => {
   }, {})
 
   return (
-    <PageWrapper title="所有文章">
+    <PageWrapper title="所有文章" pathname={pathname}>
       {
         Object.keys(postsGroupByYear)
           .sort((a, b) => b - a)

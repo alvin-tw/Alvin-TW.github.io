@@ -5,6 +5,7 @@ module.exports = {
     title: 'Alvin\'s Blog',
     description: '這裡用來紀錄開發心得與筆記，歡迎交流!',
     author: 'Alvin',
+    siteUrl: 'https://alvin-blog.netlify.app',
   },
   plugins: [
     {
