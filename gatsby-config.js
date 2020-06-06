@@ -8,6 +8,9 @@ module.exports = {
     siteUrl: 'https://alvin-blog.netlify.app',
   },
   plugins: [
+    'gatsby-plugin-netlify-cms',
+    'gatsby-transformer-remark-plaintext',
+    'gatsby-transformer-sharp',
     {
       resolve: 'gatsby-plugin-google-fonts',
       options: {
@@ -17,7 +20,6 @@ module.exports = {
         display: 'swap',
       },
     },
-    'gatsby-transformer-remark-plaintext',
     {
       resolve: 'gatsby-transformer-remark',
       options: {
@@ -53,7 +55,6 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
-    'gatsby-transformer-sharp',
     'gatsby-plugin-sharp',
     {
       resolve: 'gatsby-plugin-manifest',
@@ -90,7 +91,6 @@ module.exports = {
         head: false,
       },
     },
-    'gatsby-plugin-netlify-cms',
     {
       resolve: 'gatsby-plugin-disqus',
       options: {

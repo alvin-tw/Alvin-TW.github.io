@@ -10,3 +10,7 @@ body {
   background-color: #F5F5DC;
   font-family: 'Noto Sans TC', sans-serif;
 }
+
+h1 {
+  font-size: 32px;
+}

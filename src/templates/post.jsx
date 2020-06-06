@@ -37,7 +37,7 @@ const PostTemplate = ({
       />
       <Card border="light" className="px-3 pb-3">
         <Card.Body>
-          <Card.Title as="h2" className="font-weight-bold">{title}</Card.Title>
+          <Card.Title as="h1" className="font-weight-bold">{title}</Card.Title>
           <Card.Subtitle className="text-muted">
             <span className="pr-3">{date}</span>
             <Tags tags={tags} />
