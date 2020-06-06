@@ -12,6 +12,7 @@ const LeftSidebar = () => (
         width: 125,
         height: 125,
         borderRadius: '50%',
+        backgroundColor: '#F5F5F5',
       }}
     />
     <Card.Body>
