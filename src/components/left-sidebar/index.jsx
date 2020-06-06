@@ -2,7 +2,7 @@ import React from 'react'
 import { Card } from 'react-bootstrap'
 import { FaGithub, FaLinkedin } from 'react-icons/fa'
 
-import avatar from '@images/avger.png'
+import avatar from '@images/avatar.png'
 
 const LeftSidebar = () => (
   <Card border="light" className="d-flex mb-3 p-3 align-items-center">
