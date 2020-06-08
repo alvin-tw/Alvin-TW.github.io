@@ -42,7 +42,7 @@ const PostTemplate = ({
             <span className="pr-3">{date}</span>
             <Tags tags={tags} />
           </Card.Subtitle>
-          <Card.Text dangerouslySetInnerHTML={{ __html: html }} />
+          <Card.Text className="my-2" dangerouslySetInnerHTML={{ __html: html }} />
           <hr />
           <div className="d-flex justify-content-between mb-5">
             <span>
