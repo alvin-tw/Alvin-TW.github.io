@@ -1,5 +1,5 @@
 ---
-fileName: open-new-blog
+fileName: use-different-blogs-experience
 title: 部落格遷移心得(Wordpress -> Hexo + GitHub Page -> GatsbyJS + Netlify + Netlify CMS)
 date: 2020-06-03
 tags:
@@ -28,8 +28,8 @@ tags:
 剛接觸最熱門的兩套是[Jekyll](https://jekyllrb.com/)與[Hexo](https://hexo.io/)，兩者相比，前者使用Ruby、後者使用Node.js進行安裝編譯，由於較熟js加上懶得多裝一個語言，最終選擇後者。
 
 而對於開發部落格來說，決定用靜態網站產生器取代線上動態網站服務主因是:
-- 文章在產生時一併完成，不須存於資料庫，少了頁面請求，整體速度更加快速
-- 由於沒資料庫，不必擔心一些安全性問題
+- 文章在產生時一併完成，不須存於資料庫，少了頁面請求，整體速度更加快速。
+- 由於沒資料庫，不必擔心一些安全性問題。
 
 透過靜態網站產生器來開發部落格，掌控權回到自己手上，包含畫面調整、套件安裝等。至於佈署，則是發佈到[GitHub Page](https://pages.github.com/)。也因從網站的建立到佈署過程都是親自參與，在上線成功那刻會有滿滿的成就感!
 
