@@ -5,7 +5,7 @@ date: 2020-06-27
 tags:
   - Github
 ---
-開發專案往往都會導入CI/CD達到持續自動化測試與佈署，以往在Github上都得搭配外部服務(EX: Travis CI)來串聯CI/CD。但最近發現Github去年底推出[Github Actions](https://help.github.com/en/actions)，對一般開發者而言使用上是綽綽有餘。今天就來介紹如何使用GitHub Actions來做CI/CD吧!
+開發專案往往都會導入CI/CD達到持續自動化測試與佈署，以往在Github上都得搭配第三方服務(EX: Travis CI)來串聯CI/CD。但最近發現Github去年底推出[Github Actions](https://help.github.com/en/actions)，對一般開發者而言使用上是綽綽有餘。今天就來介紹如何使用GitHub Actions來做CI/CD吧!
 
 - [為何選用Github Actions作為CI/CD](#為何選用github-actions作為cicd)
 - [快速的寫好設定檔](#快速的寫好設定檔)
@@ -18,7 +18,7 @@ tags:
 ## 快速的寫好設定檔
 透過Github Action做基本的CI/CD並不難，只需在專案目錄下創建**.github/workflows**資料夾，並把寫好的workflow設定檔(使用yml格式)放於內即可完成。
 
-用個自動執行unit tests的workflow範例作為介紹:
+用個自動執行unit tests的範例介紹:
 
 ```yml
 name: Unit Tests
